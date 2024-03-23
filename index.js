@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Product = require("./models/product.model.js");
 const ProductRoute = require("./routes/product.route.js");
+const config = require("./config.js");
 const app = express();
 
 //middlewares
@@ -12,9 +13,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use("/api/products", ProductRoute);
 
 mongoose
-  .connect(
-    "mongodb+srv://ThejasK:password@cluster0.iczrrlg.mongodb.net/Abc?retryWrites=true&w=majority"
-  )
+  .connect(config.mongoURI)
   .then(() => {
     console.log(`Connected to database`);
     app.listen(3000, () => {
