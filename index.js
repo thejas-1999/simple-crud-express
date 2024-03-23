@@ -13,7 +13,7 @@ app.use("/api/products", ProductRoute);
 
 mongoose
   .connect(
-    "mongodb+srv://ThejasK:Thejas1999@cluster0.iczrrlg.mongodb.net/Node-API?retryWrites=true&w=majority"
+    "mongodb+srv://ThejasK:password@cluster0.iczrrlg.mongodb.net/Abc?retryWrites=true&w=majority"
   )
   .then(() => {
     console.log(`Connected to database`);
