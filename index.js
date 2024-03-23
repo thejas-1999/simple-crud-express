@@ -62,6 +62,20 @@ app.put("/api/product/:id", async (req, res) => {
   }
 });
 
+//delete the product
+app.delete("/api/product/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const product = await Product.findByIdAndDelete(id); // Remove req.body
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+    res.status(200).json({ message: `Product deleted successfully` }); // Corrected typo in the message
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 mongoose
   .connect(
     "mongodb+srv://ThejasK:Thejas1999@cluster0.iczrrlg.mongodb.net/Node-API?retryWrites=true&w=majority"
